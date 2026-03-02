@@ -7,7 +7,7 @@ def test_read_home():
     response = client.get("/")
     assert response.status_code == 200
     # Add an assertion for whatever your home page returns
-    assert response == "My home"
+    assert response.json() == {"response" : "Home"}
     
 def test_read_cart():
     response = client.get("/cart")
