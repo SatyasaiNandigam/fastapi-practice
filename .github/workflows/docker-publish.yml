@@ -29,7 +29,13 @@ jobs:
 
   build-and-push:
     needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     runs-on: ubuntu-latest # 2. Use a fresh Linux VM provided by GitHub
+    permissions:
+        contents: read
+        pull-requests: write
+
 
     steps:
       - name: Checkout code
